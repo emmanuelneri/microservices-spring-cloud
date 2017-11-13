@@ -13,7 +13,7 @@
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <spring-integration.version>4.3.9.RELEASE</spring-integration.version>
         <spring-cloud-netflix.version>1.3.4.RELEASE</spring-cloud-netflix.version>
-        <spring-cloud.version>1.3.1.RELEASE</spring-cloud.version>
+        <spring-cloud.version>1.3.3.RELEASE</spring-cloud.version>
         <mongodb-driver.version>3.4.2</mongodb-driver.version>
         <postgresql.version>9.4.1212</postgresql.version>
         <flyway.version>4.1.2</flyway.version>
@@ -26,7 +26,7 @@
         <java.version>1.8</java.version>
 
         <docker.version>1.3.4</docker.version>
-        <docker.repository>processamento-arquivo</docker.repository>
+        <docker.repository>microservices-cloud</docker.repository>
     </properties>
 
     <dependencies>
@@ -35,7 +35,11 @@
            <artifactId>spring-cloud-starter-eureka</artifactId>
             <version>${spring-cloud-netflix.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+            <version>${spring-cloud.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>

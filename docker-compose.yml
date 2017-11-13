@@ -1,27 +1,30 @@
 version: '3'
 services:
  leitor-app:
-    image: processamento-arquivo/leitor-app
+    image: microservices-cloud/leitor-app
     links:
       - queue
       - file-db
       - service-discovery
+      - config-server
 
  processador-app:
-    image: processamento-arquivo/processador-app
+    image: microservices-cloud/processador-app
     links:
       - queue
       - nota-fiscal-db
       - service-discovery
+      - config-server
 
  disponibilizador-app:
-    image: processamento-arquivo/disponibilizador-app
+    image: microservices-cloud/disponibilizador-app
     ports:
       - "8090:8090"
     links:
       - file-db
       - nota-fiscal-db
       - service-discovery
+      - config-server
 
  nota-fiscal-db:
     image: postgres:9.6
@@ -44,11 +47,11 @@ services:
        - "8161:8161"
 
  service-discovery:
-    image: processamento-arquivo/discovery
+    image: microservices-cloud/discovery
     ports:
        - "8761:8761"
 
   config-server:
-      image: processamento-arquivo/config
+      image: microservices-cloud/config
       ports:
          - "8888:8888"
