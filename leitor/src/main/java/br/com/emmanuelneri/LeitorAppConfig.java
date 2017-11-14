@@ -1,7 +1,7 @@
 package br.com.emmanuelneri;
 
 import org.apache.activemq.command.ActiveMQQueue;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -22,8 +22,8 @@ public class LeitorAppConfig {
 
     private static final String ARQUIVO_QUEUE = "nota.fiscal.queue";
 
-    @Autowired
-    private ArquivosPropertiesConfig leitorProperties;
+    @Value("${diretorio.arquivo}")
+    private String diretorio;
 
     public static void main(String[] args) {
         SpringApplication.run(LeitorAppConfig.class, args);
@@ -37,7 +37,7 @@ public class LeitorAppConfig {
     @Bean
     public IntegrationFlow fileReadingFlow() {
         return IntegrationFlows
-                .from(s -> s.file(new File(leitorProperties.getDiretorio()))
+                .from(s -> s.file(new File(diretorio))
                                 .patternFilter("*.xml")
                                 .nioLocker(),
                         e -> e.poller(Pollers.fixedDelay(1000)))
