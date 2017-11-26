@@ -1,32 +1,36 @@
 version: '3'
+networks:
+  default:
+    external:
+      name: spring-cloud
 services:
- leitor-app:
+  leitor-app:
     image: microservices-cloud/leitor-app
-    links:
+    depends_on:
       - queue
       - file-db
-      - service-discovery
-      - config-server
-
- processador-app:
-    image: microservices-cloud/processador-app
     links:
+      - service-discovery
+
+  processador-app:
+    image: microservices-cloud/processador-app
+    depends_on:
       - queue
       - nota-fiscal-db
+    links:
       - service-discovery
-      - config-server
 
- disponibilizador-app:
+  disponibilizador-app:
     image: microservices-cloud/disponibilizador-app
     ports:
       - "8090:8090"
-    links:
+    depends_on:
       - file-db
       - nota-fiscal-db
+    links:
       - service-discovery
-      - config-server
 
- nota-fiscal-db:
+  nota-fiscal-db:
     image: postgres:9.6
     ports:
       - "5432:5432"
@@ -35,23 +39,18 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
- file-db:
-     image: mongo:3.5
-     ports:
-       - "27017:27017"
+  file-db:
+    image: mongo:3.5
+    ports:
+      - "27017:27017"
 
- queue:
+  queue:
     image: rmohr/activemq:5.12.0
     ports:
-       - "61616:61616"
-       - "8161:8161"
+      - "61616:61616"
+      - "8161:8161"
 
- service-discovery:
+  service-discovery:
     image: microservices-cloud/discovery
     ports:
-       - "8761:8761"
-
-  config-server:
-      image: microservices-cloud/config
-      ports:
-         - "8888:8888"
+      - "8761:8761"
