@@ -4,24 +4,24 @@ networks:
     external:
       name: spring-cloud
 services:
-  leitor-app:
-    image: microservices-cloud/leitor-app
+  receiver-app:
+    image: microservices-cloud/receiver-app
     depends_on:
       - queue
       - file-db
     links:
       - service-discovery
 
-  processador-app:
-    image: microservices-cloud/processador-app
+  processor-app:
+    image: microservices-cloud/processor-app
     depends_on:
       - queue
       - nota-fiscal-db
     links:
       - service-discovery
 
-  disponibilizador-app:
-    image: microservices-cloud/disponibilizador-app
+  api-app:
+    image: microservices-cloud/api-app
     ports:
       - "8090:8090"
     depends_on:
