@@ -2,6 +2,7 @@ package br.com.emmanuelneri;
 
 import br.com.emmanuelneri.app.notafiscal.repository.NotaFiscalRepository;
 import org.apache.activemq.command.ActiveMQQueue;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -24,8 +25,11 @@ import javax.jms.Queue;
 @EnableJms
 public class ProcessorAppConfig {
 
-    public static final String NOTA_FISCALQUEUE = "nota.fiscal.queue";
-    public static final String NOTA_FISCAL_ERRO_QUEUE = "nota.fiscal.erro.queue";
+    @Value("${queue.process.name}")
+    private String fileProcessQueue;
+
+    @Value("${queue.error.name}")
+    private String fileErrorQueue;
 
     public static void main(String[] args) {
         SpringApplication.run(ProcessorAppConfig.class, args);
@@ -33,6 +37,6 @@ public class ProcessorAppConfig {
 
     @Bean
     public Queue queue() {
-        return new ActiveMQQueue(NOTA_FISCAL_ERRO_QUEUE);
+        return new ActiveMQQueue(fileProcessQueue);
     }
 }

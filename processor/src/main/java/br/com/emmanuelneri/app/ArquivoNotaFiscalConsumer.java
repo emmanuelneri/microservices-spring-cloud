@@ -1,6 +1,5 @@
 package br.com.emmanuelneri.app;
 
-import br.com.emmanuelneri.ProcessorAppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class ArquivoNotaFiscalConsumer {
     @Autowired
     private NotaFiscalService notaFiscalService;
 
-    @JmsListener(destination = ProcessorAppConfig.NOTA_FISCALQUEUE)
+    @JmsListener(destination = "${queue.process.name}")
     public void receive(String xml) {
         LOGGER.debug("Iniciando processamento arquivo");
         notaFiscalService.processar(xml);

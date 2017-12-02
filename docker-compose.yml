@@ -6,6 +6,8 @@ networks:
 services:
   receiver-app:
     image: microservices-cloud/receiver-app
+    ports:
+      - "8090:8090"
     depends_on:
       - queue
       - file-db
@@ -23,7 +25,7 @@ services:
   api-app:
     image: microservices-cloud/api-app
     ports:
-      - "8090:8090"
+      - "8080:8080"
     depends_on:
       - file-db
       - nota-fiscal-db
