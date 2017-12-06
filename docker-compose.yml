@@ -28,16 +28,16 @@ services:
       - "8080:8080"
     depends_on:
       - file-db
-      - nota-fiscal-db
+      - processor-db
     links:
       - service-discovery
 
-  nota-fiscal-db:
+  processor-db:
     image: postgres:9.6
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=processamento-arquivo
+      - POSTGRES_DB=processor
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
