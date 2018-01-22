@@ -18,7 +18,7 @@ services:
     image: microservices-cloud/processor-app
     depends_on:
       - queue
-      - nota-fiscal-db
+      - orders-db
     links:
       - service-discovery
 
@@ -28,11 +28,11 @@ services:
       - "8080:8080"
     depends_on:
       - file-db
-      - processor-db
+      - orders-db
     links:
       - service-discovery
 
-  processor-db:
+  orders-db:
     image: postgres:9.6
     ports:
       - "5432:5432"
@@ -47,10 +47,10 @@ services:
       - "27017:27017"
 
   queue:
-    image: rmohr/activemq:5.12.0
+    image: rabbitmq:management
     ports:
-      - "61616:61616"
-      - "8161:8161"
+      - "5672:5672"
+      - "15672:15672"
 
   service-discovery:
     image: microservices-cloud/discovery
