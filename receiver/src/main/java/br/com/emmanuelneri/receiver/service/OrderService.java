@@ -1,7 +1,7 @@
 package br.com.emmanuelneri.receiver.service;
 
 import br.com.emmanuelneri.receiver.component.OrderQueueSender;
-import br.com.emmanuelneri.receiver.model.Order;
+import br.com.emmanuelneri.receiver.model.OrderFile;
 import br.com.emmanuelneri.receiver.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,11 @@ public class OrderService {
     private OrderQueueSender orderQueueSender;
 
     public void receive(String origin, String order) {
-        final Order orderSaved = save(origin, order);
+        final OrderFile orderSaved = save(origin, order);
         orderQueueSender.send(orderSaved);
     }
 
-    private Order save(String origin, String order) {
-        return orderRepository.save(new Order(origin, order));
+    private OrderFile save(String origin, String order) {
+        return orderRepository.save(new OrderFile(origin, order));
     }
 }

@@ -1,2 +1,4 @@
-CREATE TABLE order (
+CREATE TABLE customer (
+  cnpj VARCHAR(14) PRIMARY KEY,
+  name VARCHAR(200) NOT NULL
 );

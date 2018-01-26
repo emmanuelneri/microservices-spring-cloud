@@ -9,17 +9,17 @@ import java.time.format.DateTimeFormatter;
 
 @Document(collection = "order")
 @Getter
-public class Order {
+public class OrderFile {
 
     @Id
     private String id;
 
-    private String origem;
+    private String origin;
     private String date;
     private String body;
 
-    public Order(String origem, String body) {
-        this.origem = origem;
+    public OrderFile(String origin, String body) {
+        this.origin = origin;
         this.body = body;
         this.date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
     }
