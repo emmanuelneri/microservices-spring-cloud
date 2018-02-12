@@ -109,7 +109,7 @@
     <modules>
         <module>receiver</module>
         <module>processor</module>
-        <module>api</module>
+        <module>files-api</module>
         <module>discovery</module>
         <module>config</module>
     </modules>

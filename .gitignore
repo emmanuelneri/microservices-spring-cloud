@@ -12,10 +12,35 @@
 hs_err_pid*
 
 /target
-/leitor/target
 
 *.iml
 .idea/*
 .idea/codeStyleSettings.xml
 .idea/encodings.xml
 .idea/vcs.xml
+
+/dist
+/dist-server
+/tmp
+/out-tsc
+
+# web dependencies
+/web/dist/
+/web/node_modules/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
