@@ -1,7 +1,7 @@
-package br.com.emmanuelneri.api.service;
+package br.com.emmanuelneri.files.service;
 
-import br.com.emmanuelneri.api.model.OrderFile;
-import br.com.emmanuelneri.api.repository.OrderFileRepository;
+import br.com.emmanuelneri.files.model.OrderFile;
+import br.com.emmanuelneri.files.repository.OrderFileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

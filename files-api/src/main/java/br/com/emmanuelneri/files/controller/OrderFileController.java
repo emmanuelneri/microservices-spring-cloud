@@ -1,7 +1,7 @@
-package br.com.emmanuelneri.api.controller;
+package br.com.emmanuelneri.files.controller;
 
-import br.com.emmanuelneri.api.model.OrderFile;
-import br.com.emmanuelneri.api.service.OrderFileService;
+import br.com.emmanuelneri.files.model.OrderFile;
+import br.com.emmanuelneri.files.service.OrderFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

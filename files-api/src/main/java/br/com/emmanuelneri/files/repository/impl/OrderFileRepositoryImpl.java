@@ -1,7 +1,7 @@
-package br.com.emmanuelneri.api.repository.impl;
+package br.com.emmanuelneri.files.repository.impl;
 
-import br.com.emmanuelneri.api.model.OrderFile;
-import br.com.emmanuelneri.api.repository.OrderFileRepositoryCustom;
+import br.com.emmanuelneri.files.model.OrderFile;
+import br.com.emmanuelneri.files.repository.OrderFileRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;

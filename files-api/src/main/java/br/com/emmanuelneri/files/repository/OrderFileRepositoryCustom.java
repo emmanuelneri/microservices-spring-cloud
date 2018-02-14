@@ -1,6 +1,6 @@
-package br.com.emmanuelneri.api.repository;
+package br.com.emmanuelneri.files.repository;
 
-import br.com.emmanuelneri.api.model.OrderFile;
+import br.com.emmanuelneri.files.model.OrderFile;
 
 import java.util.List;
 
