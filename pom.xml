@@ -15,8 +15,9 @@
         <spring-cloud-netflix.version>1.3.5.RELEASE</spring-cloud-netflix.version>
         <spring-cloud.version>1.4.0.RELEASE</spring-cloud.version>
         <mongodb-driver.version>3.4.2</mongodb-driver.version>
-        <postgresql.version>9.4.1212</postgresql.version>
+        <postgresql.version>42.2.1</postgresql.version>
         <flyway.version>4.1.2</flyway.version>
+        <hikari.version>2.7.7</hikari.version>
         <commons-io.version>2.5</commons-io.version>
         <slf4j.version>1.7.24</slf4j.version>
         <guava.version>21.0</guava.version>
@@ -110,6 +111,7 @@
         <module>receiver</module>
         <module>processor</module>
         <module>files-api</module>
+        <module>orders-api</module>
         <module>discovery</module>
         <module>config</module>
     </modules>
