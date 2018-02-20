@@ -1,0 +1,40 @@
+<h1 class="mt-5">Files View</h1>
+
+<form>
+
+  <div class="row">
+    <div class="form-group">
+      <div class="col-md-6">
+        <label>ID: </label>
+        <input name="id" [(ngModel)]="file.id" class="form-control" readonly />
+      </div>
+
+      <div class="col-md-3">
+        <label>Origin: </label>
+        <input name="origin" [(ngModel)]="file.origin" class="form-control" readonly />
+      </div>
+
+      <div class="col-md-3">
+        <label>Date: </label>
+        <input name="date" [(ngModel)]="file.date" class="form-control" readonly />
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px">
+    <div class="col-md-12">
+      <textarea name="body" [(ngModel)]="file.body" class="form-control" rows="20" readonly></textarea>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px">
+    <div class="col-md-12">
+      <a routerLink="/files">
+        <button type="button" class="btn btn-primary" title="Back">
+          <span class="glyphicon glyphicon-arrow-left"></span> Back
+        </button>
+      </a>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,48 @@
+<h1 class="mt-5">Order</h1>
+
+<form>
+
+  <div class="row">
+    <div class="form-group">
+      <div class="col-md-6">
+        <label>ID: </label>
+        <input value="{{order.id}}" class="form-control" readonly />
+      </div>
+
+      <div class="col-md-3">
+        <label>Identifier: </label>
+        <input value="{{order.identifier}}" class="form-control" readonly />
+      </div>
+
+      <div class="col-md-3">
+        <label>Date: </label>
+        <input value="{{order.dateTime | date:'yyyy-MM-dd HH:mm:ss Z'}}" class="form-control" readonly />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>Customer: </label>
+      <input value="{{order.customer.name}}" class="form-control" readonly />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <label>Total: </label>
+      <input value="{{order.total}}" class="form-control" readonly />
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px">
+    <div class="col-md-12">
+      <a routerLink="/files">
+        <button type="button" class="btn btn-primary" title="Back">
+          <span class="glyphicon glyphicon-arrow-left"></span> Back
+        </button>
+      </a>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,14 @@
+<div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand"> <a href="/">{{title}}</a></a>
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/files">Files received</a></li>
+        <li><a routerLink="/orders">Orders processed</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
