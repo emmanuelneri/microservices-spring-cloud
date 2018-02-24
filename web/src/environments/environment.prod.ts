@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  gatewayUrl: 'http://gateway:8765/api'
 };

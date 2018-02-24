@@ -113,6 +113,7 @@
         <module>files-api</module>
         <module>orders-api</module>
         <module>discovery</module>
+        <module>gateway</module>
         <module>config</module>
     </modules>
 

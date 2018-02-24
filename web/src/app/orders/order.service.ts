@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
+import { environment } from '../../environments/environment';
 
 import {Order} from "./order";
 
 @Injectable()
 export class OrderService {
 
-  private url: string = 'http://localhost:8080/orders';
+  private url: string = environment.gatewayUrl + '/orders';
 
   constructor(private httpClient: HttpClient) {}
 
