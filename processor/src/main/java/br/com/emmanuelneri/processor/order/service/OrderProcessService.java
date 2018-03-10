@@ -1,14 +1,9 @@
 package br.com.emmanuelneri.processor.order.service;
 
-import br.com.emmanuelneri.processor.exception.InvalidFileException;
 import br.com.emmanuelneri.processor.order.model.Order;
-import br.com.emmanuelneri.processor.util.Read;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 @Service
 public class OrderProcessService {
@@ -17,8 +12,7 @@ public class OrderProcessService {
     private OrderService orderService;
 
     @Transactional
-    public void process(String orderBody, String fileId) {
-        final Order orderParsed = read(orderBody);
+    public void process(Order orderParsed) {
         final boolean existsOrder = orderService.existsByIdentifier(orderParsed.getIdentifier());
 
         if(existsOrder) {
@@ -39,16 +33,6 @@ public class OrderProcessService {
         existingOrder.setTotal(orderParsed.getTotal());
 
         orderService.save(existingOrder);
-    }
-
-    private Order read(String fileBody) {
-        try {
-            return Read.createDeserializer().readValue(fileBody, Order.class);
-        } catch (JsonParseException | JsonMappingException jex) {
-            throw new InvalidFileException("invalid file", jex);
-        } catch (Exception ex) {
-           throw new IllegalArgumentException("unexpected error", ex);
-        }
     }
 
 }
