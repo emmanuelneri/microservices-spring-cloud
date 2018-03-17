@@ -3,11 +3,10 @@ package br.com.emmanuelneri;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-@SpringBootApplication(exclude = MongoAutoConfiguration.class)
+@SpringBootApplication
 @EnableDiscoveryClient
 @EntityScan(basePackages = "br.com.emmanuelneri.orders.model", basePackageClasses = Jsr310JpaConverters.class)
 public class OrdersApiAppConfig {
