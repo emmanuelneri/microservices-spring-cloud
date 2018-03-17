@@ -115,6 +115,7 @@
     <modules>
         <module>receiver</module>
         <module>processor</module>
+        <module>customers</module>
         <module>files-api</module>
         <module>orders-api</module>
         <module>discovery</module>
