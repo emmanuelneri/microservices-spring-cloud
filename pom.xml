@@ -42,6 +42,11 @@
             <version>${spring-cloud.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <version>${spring-cloud.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
@@ -114,6 +119,7 @@
         <module>orders-api</module>
         <module>discovery</module>
         <module>gateway</module>
+        <module>breaker</module>
         <module>config</module>
     </modules>
 
