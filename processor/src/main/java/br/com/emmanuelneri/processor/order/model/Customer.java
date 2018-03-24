@@ -12,12 +12,8 @@ import javax.validation.constraints.Size;
 public class Customer {
 
     @Id
-    @NotEmpty
-    @Size(max = 14)
+    private Long id;
     private String cnpj;
-
-    @NotEmpty
-    @Size(max = 200)
     private String name;
 
 }

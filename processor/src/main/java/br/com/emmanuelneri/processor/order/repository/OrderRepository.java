@@ -8,8 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    @Query(name = "Order.findCompleteByIdentifier")
-    Order findCompleteByIdentifier(@Param(value = "identifier") String identifier);
+    Order findByIdentifier(String identifier);
 
     boolean existsByIdentifier(@Param(value = "identifier") String identifier);
 

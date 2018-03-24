@@ -1,21 +1,14 @@
 package br.com.emmanuelneri.processor.order.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import lombok.Getter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -27,9 +20,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "sales_order", uniqueConstraints = @UniqueConstraint(name = "sales_order_uk", columnNames = {"identifier"}))
-@NamedQueries({
-        @NamedQuery(name = "Order.findCompleteByIdentifier", query = "select o from Order o join fetch o.customer where o.identifier = :identifier"),
-})
 @Getter
 @ToString
 public class Order {
@@ -46,17 +36,24 @@ public class Order {
     private String identifier;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private Long customerId;
 
     @NotNull
     @Column(name = "date_time")
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dateTime;
 
     @NotNull
     private BigDecimal total;
+
+    public Order(){
+    }
+
+    public Order(String identifier, Long customerId, LocalDateTime dateTime, BigDecimal total) {
+        this.identifier = identifier;
+        this.customerId = customerId;
+        this.dateTime = dateTime;
+        this.total = total;
+    }
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;

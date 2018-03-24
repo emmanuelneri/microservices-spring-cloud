@@ -1,0 +1,6 @@
+CREATE TABLE customer (
+  id BIGSERIAL PRIMARY KEY,
+  cnpj VARCHAR(14) NOT NULL,
+  name VARCHAR(200) NOT NULL,
+  CONSTRAINT customer_uk UNIQUE (cnpj)
+);

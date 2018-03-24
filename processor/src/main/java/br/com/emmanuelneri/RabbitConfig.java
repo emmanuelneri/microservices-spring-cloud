@@ -19,7 +19,7 @@ public class RabbitConfig {
     @Value("${rabbitmq.max.concurrent.consumers}")
     private int maxConcurrentConsumers;
 
-    @Value("${rabbitmq.max.retry.attempt}")
+    @Value("${rabbitmq.max.retry.attempts}")
     private int maxRetryAttempts;
 
     @Autowired

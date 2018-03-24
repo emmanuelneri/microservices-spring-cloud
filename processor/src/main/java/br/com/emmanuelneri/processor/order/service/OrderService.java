@@ -12,7 +12,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     public Order findCompleteByIdentifier(String identifier) {
-        return orderRepository.findCompleteByIdentifier(identifier);
+        return orderRepository.findByIdentifier(identifier);
     }
 
     public boolean existsByIdentifier(String identifier) {

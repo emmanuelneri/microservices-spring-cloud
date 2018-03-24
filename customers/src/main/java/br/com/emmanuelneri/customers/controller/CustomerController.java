@@ -3,6 +3,7 @@ package br.com.emmanuelneri.customers.controller;
 import br.com.emmanuelneri.customers.model.Customer;
 import br.com.emmanuelneri.customers.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,9 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/{cnpj}", method = RequestMethod.GET)
-    public Customer findById(@PathVariable(value = "cnpj") String cnpj) {
-        return customerService.findById(cnpj);
+    public ResponseEntity<Customer> findByCnpj(@PathVariable(value = "cnpj") String cnpj) {
+        final Customer customer = customerService.findByCnpj(cnpj);
+        return customer != null ? ResponseEntity.ok(customer) : ResponseEntity.notFound().build();
     }
 
     @RequestMapping(method = RequestMethod.POST)
