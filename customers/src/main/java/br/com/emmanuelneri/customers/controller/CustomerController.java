@@ -24,9 +24,15 @@ public class CustomerController {
         return customerService.findAll();
     }
 
-    @RequestMapping(value = "/{cnpj}", method = RequestMethod.GET)
+    @RequestMapping(value = "/document/{cnpj}", method = RequestMethod.GET)
     public ResponseEntity<Customer> findByCnpj(@PathVariable(value = "cnpj") String cnpj) {
         final Customer customer = customerService.findByCnpj(cnpj);
+        return customer != null ? ResponseEntity.ok(customer) : ResponseEntity.notFound().build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Customer> findById(@PathVariable(value = "id") Long id) {
+        final Customer customer = customerService.findById(id);
         return customer != null ? ResponseEntity.ok(customer) : ResponseEntity.notFound().build();
     }
 

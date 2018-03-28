@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "customers")
 public interface Customers {
 
-    @RequestMapping(value = "/customers/{cnpj}", method = RequestMethod.GET)
+    @RequestMapping(value = "/customers/document/{cnpj}", method = RequestMethod.GET)
     Customer findByCnpj(@PathVariable("cnpj") String cnpj);
 
 }

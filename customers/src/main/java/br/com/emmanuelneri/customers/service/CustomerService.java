@@ -22,9 +22,14 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    @Cacheable(cacheNames= CACHE, key="#root.method.name + '(' + #cnpj + ')'")
+    @Cacheable(cacheNames = CACHE, key="#root.method.name + '(' + #cnpj + ')'")
     public Customer findByCnpj(String cnpj) {
         return customerRepository.findByCnpj(cnpj);
+    }
+
+    @Cacheable(cacheNames = CACHE, key="#root.method.name + '(' + #id + ')'")
+    public Customer findById(Long id) {
+        return customerRepository.findOne(id);
     }
 
     @CacheEvict(cacheNames = CACHE, allEntries = true)

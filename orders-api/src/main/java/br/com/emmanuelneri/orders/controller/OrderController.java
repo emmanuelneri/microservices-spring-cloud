@@ -1,6 +1,6 @@
 package br.com.emmanuelneri.orders.controller;
 
-import br.com.emmanuelneri.orders.model.Order;
+import br.com.emmanuelneri.orders.dto.OrderDTO;
 import br.com.emmanuelneri.orders.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +18,12 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Order> findAll() {
+    public List<OrderDTO> findAll() {
         return orderService.findAll();
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Order findById(@PathVariable(name = "id") Long id) {
+    public OrderDTO findById(@PathVariable(name = "id") Long id) {
         return orderService.findById(id);
     }
 

@@ -24,9 +24,8 @@ public class Order {
 
     private String identifier;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @Column(name = "customer_id")
+    private Long customer;
 
     @Column(name = "date_time")
     private LocalDateTime dateTime;
