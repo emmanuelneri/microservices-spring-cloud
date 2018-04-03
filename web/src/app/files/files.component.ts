@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileService } from "./file.service";
 import { File } from "./file"
+import dataPageUtil from "../dataPageUtil";
 
 @Component({
   selector: 'app-files',
@@ -10,6 +11,9 @@ import { File } from "./file"
 export class FilesComponent implements OnInit {
 
   private files: File[] = [];
+  private page: number = 1;
+  private pageSize: number = dataPageUtil.getPageSize();
+  private totalElements: number = 0;
 
   constructor(private fileService: FileService) { }
 
@@ -18,9 +22,15 @@ export class FilesComponent implements OnInit {
   }
 
   private findFiles() {
-    this.fileService.findAll().subscribe(data => {
-      this.files = data
+    this.fileService.findAllPaged(this.page, this.pageSize).subscribe(data => {
+      this.files = data.content;
+      this.totalElements = data.totalElements;
     });
+  }
+
+  private loadPage(page: number) {
+    this.page = page;
+    this.findFiles();
   }
 
 }

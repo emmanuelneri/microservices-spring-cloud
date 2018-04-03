@@ -1,26 +1,27 @@
 <h1 class="mt-5">Files received</h1>
 
-<div class="table-responsive" style="margin-top: 20px">
-  <table class="table table-striped">
-    <thead>
-      <th class="text-center">ID</th>
-      <th class="text-center">Origin</th>
-      <th class="text-center">Date</th>
-      <th class="text-center">Options</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let file of files">
-        <td>{{file.id}}</td>
-        <td class="text-center">{{file.origin}}</td>
-        <td class="text-center">{{file.date}}</td>
-        <td class="text-center">
-          <a routerLink="/files/{{file.id}}">
-            <button type="button" class="btn btn-default" title="View">
-              <span class="glyphicon glyphicon-new-window"></span>
-            </button>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-striped">
+  <thead>
+    <th class="text-center">ID</th>
+    <th class="text-center">Origin</th>
+    <th class="text-center">Date</th>
+    <th class="text-center">Options</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{file.id}}</td>
+      <td class="text-center">{{file.origin}}</td>
+      <td class="text-center">{{file.date}}</td>
+      <td class="text-center">
+        <a routerLink="/files/{{file.id}}">
+          <button type="button" class="btn btn-info" title="View">
+            View
+          </button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalElements" [(page)]="page"
+                (pageChange)="loadPage($event)" [maxSize]="5" [rotate]="true" [ellipses]="false" ></ngb-pagination>

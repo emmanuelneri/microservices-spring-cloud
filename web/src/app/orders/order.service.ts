@@ -4,6 +4,8 @@ import { Observable } from "rxjs/Observable";
 import { environment } from '../../environments/environment';
 
 import {Order} from "./order";
+import {Paged} from "../paged";
+import dataPageUtil from "../dataPageUtil";
 
 @Injectable()
 export class OrderService {
@@ -12,8 +14,8 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient) {}
 
-  findAll(): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(this.url, {})
+  findAllPaged(page, pageSize): Observable<Paged<Order>> {
+    return this.httpClient.get<Paged<Order>>(this.url + '/paged/'+ dataPageUtil.getBackEndPage(page) + '/'+ pageSize, {})
   }
 
   findById(id): Observable<Order> {

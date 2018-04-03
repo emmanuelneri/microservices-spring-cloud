@@ -4,6 +4,8 @@ import { Observable } from "rxjs/Observable";
 import {environment} from "../../environments/environment";
 
 import { File } from "./file"
+import dataPageUtil from "../dataPageUtil";
+import {Paged} from "../paged";
 
 @Injectable()
 export class FileService {
@@ -12,8 +14,8 @@ export class FileService {
 
   constructor(private httpClient: HttpClient) {}
 
-  findAll(): Observable<File[]> {
-    return this.httpClient.get<File[]>(this.url, {})
+  findAllPaged(page, pageSize): Observable<Paged<File>> {
+    return this.httpClient.get<Paged<File>>(this.url + '/paged/'+ dataPageUtil.getBackEndPage(page) + '/'+ pageSize, {})
   }
 
   findById(id): Observable<File> {

@@ -16,6 +16,7 @@
         <spring-cloud.version>1.4.0.RELEASE</spring-cloud.version>
         <mongodb-driver.version>3.4.2</mongodb-driver.version>
         <postgresql.version>42.2.1</postgresql.version>
+        <queryDsl.version>4.2.1</queryDsl.version>
         <flyway.version>4.1.2</flyway.version>
         <hikari.version>2.7.7</hikari.version>
         <commons-io.version>2.5</commons-io.version>

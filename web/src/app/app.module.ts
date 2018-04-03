@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +13,7 @@ import { OrdersComponent } from './orders/orders.component';
 
 import { FileService } from './files/file.service';
 import { OrdersViewComponent } from './orders/orders-view.component';
-import {OrderService} from "./orders/order.service";
+import { OrderService } from "./orders/order.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [FileService, OrderService],
   bootstrap: [AppComponent]

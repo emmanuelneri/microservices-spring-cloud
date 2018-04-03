@@ -21,6 +21,6 @@ public class OrderFile {
     public OrderFile(String origin, String body) {
         this.origin = origin;
         this.body = body;
-        this.date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        this.date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }
