@@ -22,13 +22,31 @@ services:
     links:
       - service-discovery
 
-  api-app:
-    image: microservices-cloud/api-app
+  files-api-app:
+    image: microservices-cloud/files-api-app
+    ports:
+      - "8090:8090"
+    depends_on:
+      - file-db
+    links:
+      - service-discovery
+
+  orders-api-app:
+    image: microservices-cloud/orders-api-app
     ports:
       - "8080:8080"
     depends_on:
-      - file-db
       - orders-db
+    links:
+      - service-discovery
+
+  customers-api-app:
+    image: microservices-cloud/customers-app
+    ports:
+      - "8070:8070"
+    depends_on:
+      - orders-db
+      -cache
     links:
       - service-discovery
 
@@ -40,6 +58,11 @@ services:
       - POSTGRES_DB=processor
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
+  cache:
+    image: redis:4.0.8
+    ports:
+      - "6379:6379"
 
   file-db:
     image: mongo:3.5
