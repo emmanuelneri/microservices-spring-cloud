@@ -25,7 +25,7 @@ services:
   files-api-app:
     image: microservices-cloud/files-api-app
     ports:
-      - "8090:8090"
+      - "8070:8070"
     depends_on:
       - file-db
     links:
@@ -34,7 +34,7 @@ services:
   orders-api-app:
     image: microservices-cloud/orders-api-app
     ports:
-      - "8080:8080"
+      - "8050:8050"
     depends_on:
       - orders-db
     links:
@@ -43,10 +43,10 @@ services:
   customers-api-app:
     image: microservices-cloud/customers-app
     ports:
-      - "8070:8070"
+      - "8060:8060"
     depends_on:
       - orders-db
-      -cache
+      - cache
     links:
       - service-discovery
 
