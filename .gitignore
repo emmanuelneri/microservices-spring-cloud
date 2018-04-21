@@ -47,3 +47,5 @@ Thumbs.db
 /web/node_modules/*
 /node_modules/*
 /node_modules
+/web/build/
+/web/build/*
