@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 networks:
   default:
     external:
@@ -8,49 +8,25 @@ services:
     image: microservices-cloud/receiver-app
     ports:
       - "8090:8090"
-    external_links:
-      - queue
-      - file-db
-    links:
-      - service-discovery
 
   processor-app:
     image: microservices-cloud/processor-app
-    external_links:
-      - queue
-      - orders-db-master
-    links:
-      - service-discovery
 
   files-api-app:
     image: microservices-cloud/files-api-app
     ports:
       - "8070:8070"
-    external_links:
-      - file-db
-    links:
-      - service-discovery
 
   orders-api-app:
     image: microservices-cloud/orders-api-app
     ports:
       - "8050:8050"
-    external_links:
-      - orders-db-slave
-    links:
-      - service-discovery
 
-  customers-api-app:
+  customers-app:
     image: microservices-cloud/customers-app
     ports:
       - "8060:8060"
-    external_links:
-      - customers-db
-      - cache
-    links:
-      - service-discovery
-
-  service-discovery:
-    image: microservices-cloud/discovery
+  web:
+    image: microservices-cloud/web
     ports:
-      - "8761:8761"
+      - "4200:4200"

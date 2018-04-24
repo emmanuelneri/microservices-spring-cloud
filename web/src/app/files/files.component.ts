@@ -28,7 +28,7 @@ export class FilesComponent implements OnInit {
     });
   }
 
-  private loadPage(page: number) {
+  public loadPage(page: number) {
     this.page = page;
     this.findFiles();
   }

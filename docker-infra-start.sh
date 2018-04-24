@@ -3,12 +3,6 @@
 docker network create spring-cloud
 
 docker run -d \
-    --name config-server \
-    --network=spring-cloud \
-    -p 8888:8888 \
-    microservices-cloud/config
-
-docker run -d \
   --name orders-db-master \
   --network=spring-cloud \
   -e POSTGRESQL_REPLICATION_MODE=master \

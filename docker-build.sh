@@ -10,3 +10,6 @@ mvn -f processor/pom.xml dockerfile:build
 mvn -f customers/pom.xml dockerfile:build
 mvn -f files-api/pom.xml dockerfile:build
 mvn -f orders-api/pom.xml dockerfile:build
+
+(cd web && ng build --output-path=build)
+(cd web && docker build -t microservices-cloud/web .)
