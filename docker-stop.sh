@@ -9,7 +9,8 @@ docker rm -f cache
 docker rm -f file-db
 docker rm -f queue
 docker rm -f config-server
-docker rm -f discovery
+docker rm -f service-discovery
 docker rm -f breaker
 docker rm -f gateway
+docker rm -f trace
 docker network rm spring-cloud

@@ -2,7 +2,7 @@
 
 docker network create spring-cloud
 
-docker run -d \
+docker run -itd \
   --name orders-db-master \
   --network=spring-cloud \
   -e POSTGRESQL_REPLICATION_MODE=master \
@@ -13,7 +13,7 @@ docker run -d \
   -e POSTGRESQL_REPLICATION_PASSWORD=postgres \
   bitnami/postgresql:9.6
 
-docker run -d \
+docker run -itd \
   --name orders-db-slave \
   --network=spring-cloud \
   --link orders-db-master \
@@ -24,7 +24,7 @@ docker run -d \
   -e POSTGRESQL_REPLICATION_PASSWORD=postgres \
   bitnami/postgresql:9.6
 
-docker run -d \
+docker run -itd \
     --name customers-db \
     --network=spring-cloud \
     -p 5432:5432 \
@@ -39,18 +39,23 @@ docker run -d \
     -p 6379:6379 \
     redis:4.0.8
 
-docker run -d \
+docker run -itd \
     --name file-db \
     --network=spring-cloud \
     -p 27017:27017 \
     mongo:3.5
 
-docker run -d \
+docker run -itd \
     --name queue \
     --network=spring-cloud \
     -p 5672:5672 \
     -p 15672:15672 \
     rabbitmq:management
 
+docker run -itd \
+    --name trace \
+    --network=spring-cloud \
+    -p 9411:9411 \
+    openzipkin/zipkin
 
 echo "Infra started"

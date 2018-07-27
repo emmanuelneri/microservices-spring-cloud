@@ -24,6 +24,12 @@ public class OrderController {
         orderService.receive(origin, order);
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home() {
+        log.info("Handling home");
+        return "Hello World";
+    }
+
     private void defaultFallback(String origin, String order) {
         log.error("System error! origin: " + origin);
     }
