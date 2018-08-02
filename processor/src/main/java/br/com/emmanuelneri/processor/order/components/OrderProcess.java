@@ -3,6 +3,7 @@ package br.com.emmanuelneri.processor.order.components;
 import br.com.emmanuelneri.processor.order.model.Order;
 import br.com.emmanuelneri.processor.order.service.OrderService;
 import br.com.emmanuelneri.processor.order.to.OrderTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Slf4j
 public class OrderProcess {
     
     @Autowired
@@ -24,6 +26,8 @@ public class OrderProcess {
         } else {
             createOrder(orderTO);
         }
+
+        log.info("Order processed - {}", orderTO);
     }
 
     private void createOrder(OrderTO orderTO) {

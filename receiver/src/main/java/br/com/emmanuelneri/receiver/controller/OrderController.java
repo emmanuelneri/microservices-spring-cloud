@@ -21,17 +21,12 @@ public class OrderController {
     @HystrixCommand(fallbackMethod = "defaultFallback")
     @RequestMapping(value = "/{origin}", method = RequestMethod.POST)
     public void receive(@PathVariable("origin") String origin, @RequestBody String order) {
+        log.info("Order Received from {}", origin);
         orderService.receive(origin, order);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home() {
-        log.info("Handling home");
-        return "Hello World";
-    }
-
     private void defaultFallback(String origin, String order) {
-        log.error("System error! origin: " + origin);
+        log.error("System error - default fallback Method called - origin: " + origin);
     }
 
 }

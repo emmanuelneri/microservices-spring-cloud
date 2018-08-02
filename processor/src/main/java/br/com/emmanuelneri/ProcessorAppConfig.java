@@ -1,6 +1,5 @@
 package br.com.emmanuelneri;
 
-import br.com.emmanuelneri.processor.order.model.Order;
 import br.com.emmanuelneri.processor.order.components.OrderValidation;
 import br.com.emmanuelneri.processor.order.to.OrderTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.integration.config.EnableIntegration;
@@ -16,6 +16,7 @@ import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.amqp.Amqp;
 import org.springframework.integration.dsl.support.Transformers;
+import org.springframework.integration.handler.LoggingHandler;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -38,9 +39,15 @@ public class ProcessorAppConfig {
     public IntegrationFlow orderProcessorFlow() {
         return IntegrationFlows
                 .from(Amqp.inboundAdapter(rabbitConfig.listenerContainer()))
+                .log(LoggingHandler.Level.INFO)
                 .transform(Transformers.fromJson(OrderTO.class))
                 .filter(orderValidation)
                 .handle("orderProcess", "process")
                 .get();
+    }
+
+    @Bean
+    public AlwaysSampler defaultSampler() {
+        return new AlwaysSampler();
     }
 }
