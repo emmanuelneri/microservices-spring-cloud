@@ -17,7 +17,7 @@ docker run -d \
 docker run -d \
     --name breaker \
     --network=spring-cloud \
-    -p 9090:9090 \
+    -p 7979:7979 \
     microservices-cloud/breaker
 
 docker run -d \

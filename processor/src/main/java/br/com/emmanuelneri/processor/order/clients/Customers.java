@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "customers")
+@FeignClient(value = "customers", fallback = CustomersFallBack.class)
 public interface Customers {
 
     @RequestMapping(value = "/customers/document/{cnpj}", method = RequestMethod.GET)

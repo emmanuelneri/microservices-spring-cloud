@@ -1,14 +1,14 @@
 package br.com.emmanuelneri.processor.order.model;
 
 import lombok.Getter;
-import org.hibernate.validator.constraints.NotEmpty;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -16,4 +16,7 @@ public class Customer {
     private String cnpj;
     private String name;
 
+    public Customer(Long id) {
+        this.id = id;
+    }
 }
