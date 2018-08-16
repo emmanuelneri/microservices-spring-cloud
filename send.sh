@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url=http://localhost:8090
+url=http://localhost:8080/api/receiver
 
 value=100
 
