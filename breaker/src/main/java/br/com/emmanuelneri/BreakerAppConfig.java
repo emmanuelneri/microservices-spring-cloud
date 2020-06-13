@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+//import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
@@ -16,9 +16,10 @@ public class BreakerAppConfig {
         SpringApplication.run(BreakerAppConfig.class, args);
     }
 
-    @Bean
-    public AlwaysSampler defaultSampler() {
-        return new AlwaysSampler();
-    }
+    // TODO precisa?
+//    @Bean
+//    public AlwaysSampler defaultSampler() {
+//        return new AlwaysSampler();
+//    }
 
 }

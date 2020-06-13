@@ -31,13 +31,13 @@ docker run -itd \
     -e POSTGRES_DB=customers \
     -e POSTGRES_USER=postgres \
     -e POSTGRES_PASSWORD=postgres \
-    postgres:9.6
+    postgres:9.6-alpine
 
 docker run -d \
     --name cache \
     --network=spring-cloud \
     -p 6379:6379 \
-    redis:4.0.8
+    redis:4.0.8-alpine
 
 docker run -itd \
     --name file-db \
@@ -50,7 +50,7 @@ docker run -itd \
     --network=spring-cloud \
     -p 5672:5672 \
     -p 15672:15672 \
-    rabbitmq:management
+    rabbitmq:management-alpine
 
 docker run -itd \
     --name trace \

@@ -19,6 +19,6 @@ public class OrderFileService {
     }
 
     public OrderFile findById(String id) {
-        return orderFileRepository.findOne(id);
+        return orderFileRepository.findById(id).orElse(null);
     }
 }

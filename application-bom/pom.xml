@@ -9,14 +9,13 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>discovery</artifactId>
-    <packaging>jar</packaging>
-
+    <artifactId>application-bom</artifactId>
+    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -47,7 +46,7 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>${docker.version}</version>
                 <configuration>
-                    <repository>${docker.repository}/${project.artifactId}</repository>
+                    <repository>${docker.repository}/${project.artifactId}-app</repository>
                 </configuration>
             </plugin>
         </plugins>

@@ -19,7 +19,7 @@ public class OrderFileRepositoryImpl implements OrderFileRepositoryCustom {
 
     @Override
     public Page<OrderFile> findAllWithoutBody(int page, int pageSize) {
-        final Pageable pageable = new PageRequest(page, pageSize);
+        final Pageable pageable = PageRequest.of(page, pageSize);
 
         final Query query = new Query();
         query.fields().exclude("body");

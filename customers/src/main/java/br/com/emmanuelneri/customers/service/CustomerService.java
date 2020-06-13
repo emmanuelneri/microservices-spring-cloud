@@ -29,7 +29,7 @@ public class CustomerService {
 
     @Cacheable(cacheNames = CACHE, key="#root.method.name + '(' + #id + ')'")
     public Customer findById(Long id) {
-        return customerRepository.findOne(id);
+        return customerRepository.findById(id).orElse(null);
     }
 
     @CacheEvict(cacheNames = CACHE, allEntries = true)
