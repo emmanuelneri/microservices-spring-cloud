@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mvn clean package
+mvn clean install
 mvn -f config/pom.xml dockerfile:build
 mvn -f discovery/pom.xml dockerfile:build
 mvn -f breaker/pom.xml dockerfile:build
