@@ -1,4 +1,4 @@
-## Config
+## Config - Spring Cloud Config
 
 Obs: Como os arquivos são carregados da pasta local é necessário iniciar o projeto com o profile **native** 
 
