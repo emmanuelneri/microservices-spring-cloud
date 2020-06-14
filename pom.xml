@@ -21,12 +21,9 @@
         <slf4j.version>1.7.24</slf4j.version>
         <guava.version>21.0</guava.version>
         <junit.version>4.12</junit.version>
-        <lombok.version>1.16.10</lombok.version>
+        <lombok.version>1.18.12</lombok.version>
 
-        <java.version>1.8</java.version>
-
-        <docker.version>1.3.4</docker.version>
-        <docker.repository>microservices-cloud</docker.repository>
+        <java.version>14</java.version>
     </properties>
 
     <dependencies>

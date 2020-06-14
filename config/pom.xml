@@ -36,11 +36,15 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>${docker.version}</version>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.33.0</version>
                 <configuration>
-                    <repository>${docker.repository}/${project.artifactId}</repository>
+                    <images>
+                        <image>
+                            <name>${project.parent.artifactId}/${project.name}</name>
+                        </image>
+                    </images>
                 </configuration>
             </plugin>
         </plugins>

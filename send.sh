@@ -5,7 +5,7 @@ url=http://localhost:8080/api/receiver
 value=100
 
 START_TIME=$SECONDS
-for i in {1..10}
+for i in {1..1}
 do
   cnpj="59683461000159"
   dateNow=$(date +"%FT%T")
