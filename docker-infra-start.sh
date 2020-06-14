@@ -11,7 +11,7 @@ docker run -itd \
   -e POSTGRESQL_DATABASE=orders \
   -e POSTGRESQL_REPLICATION_USER=replication \
   -e POSTGRESQL_REPLICATION_PASSWORD=postgres \
-  bitnami/postgresql:9.6
+  bitnami/postgresql:12
 
 docker run -itd \
   --name orders-db-slave \
@@ -20,9 +20,11 @@ docker run -itd \
   -e POSTGRESQL_REPLICATION_MODE=slave \
   -e POSTGRESQL_MASTER_HOST=orders-db-master \
   -e POSTGRESQL_MASTER_PORT_NUMBER=5432 \
+  -e POSTGRESQL_USERNAME=postgres \
+  -e POSTGRESQL_PASSWORD=postgres \
   -e POSTGRESQL_REPLICATION_USER=postgres \
   -e POSTGRESQL_REPLICATION_PASSWORD=postgres \
-  bitnami/postgresql:9.6
+  bitnami/postgresql:12
 
 docker run -itd \
     --name customers-db \
